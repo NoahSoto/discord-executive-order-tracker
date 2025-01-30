@@ -5,6 +5,8 @@ This bot will track the 10 latest presidential actions listed on whitehouse.gov.
 # Install
 
 ```
+git clone https://github.com/NoahSoto/executive-order-tracker
+cd ./executive-order-tracker
 pip install -r requirements.txt
 go run main.go &
 ```
