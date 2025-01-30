@@ -97,6 +97,8 @@ func viewMostRecent(discord *discordgo.Session, channelID string, orderNum int) 
 
 			message := "[" + sOrderIndex + "]" + " Release Date: " + order.ReleaseDate + "\n" + "Title: " + order.OrderTitle + "\n"
 			discord.ChannelMessageSend(channelID, message)
+			discord.ChannelMessageSend(channelID, "Link: "+order.OrderLink)
+
 		}
 	} else {
 		order := orders[orderNum-1]
