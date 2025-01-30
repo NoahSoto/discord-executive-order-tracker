@@ -2,6 +2,14 @@
 
 This bot will track the 10 latest presidential actions listed on whitehouse.gov.
 
+# Install
+
+```
+pip install -r requirements.txt
+go run main.go &
+```
+
+
 # Usage
 
 Initialize the bot with exeuctive orders, and start the golang worker to check for new actions by running
