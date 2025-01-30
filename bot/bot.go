@@ -263,6 +263,8 @@ func Run() {
 func help(discord *discordgo.Session, channelID string) {
 	discord.ChannelMessageSend(channelID, "Presidential Executive Order Notifications!\n\t\"!order\" - specify which channel you'd like alerts sent to.")
 	discord.ChannelMessageSend(channelID, "\t\"!view\" - view links,dates, and titles of 10 most recent presidential actions")
+	discord.ChannelMessageSend(channelID, "\t\"!ls\" - view listing of 10 most recent orders")
+
 	discord.ChannelMessageSend(channelID, "- zion")
 }
 func order(discord *discordgo.Session, userchannelID string) {
