@@ -2,9 +2,9 @@
 
 This bot will track the latest 10 presidential actions listed on [whitehouse.gov](https://www.whitehouse.gov/).
 
-# Install
+# Installation
 
-To install the bot, run the following commands:
+To run the bot, run the following commands:
 
 ```
 git clone https://github.com/NoahSoto/executive-order-tracker
@@ -13,9 +13,21 @@ pip install -r requirements.txt
 go run main.go &
 ```
 
+To build an executable that will run without the overhead, run:
+
+```
+git clone https://github.com/NoahSoto/executive-order-tracker
+cd ./executive-order-tracker
+pip install -r requirements.txt
+go build -o executive-order-tracker-binary main.go
+./executive-order-tracker-binary
+```
+
+Note that the executable option will consume more storage but require less headroom, as well as require a rebuild every time the main source code is updated.
+
 # Discord Usage
 
-In Discord, to initialize the bot and start searching for executive orders, run the command:
+In Discord, to search for executive orders, run the command:
 
 ```
 !orders
