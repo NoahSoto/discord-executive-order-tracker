@@ -13,7 +13,7 @@ pip install -r requirements.txt
 go run main.go &
 ```
 
-To build an executable that will run without the overhead, run:
+Or, if you prefer to build an executable that will run without the overhead, run:
 
 ```
 git clone https://github.com/NoahSoto/executive-order-tracker
