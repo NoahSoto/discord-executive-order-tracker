@@ -1,6 +1,6 @@
 # Golang Presidential-Action Tracker
 
-This bot will track the 10 latest presidential actions listed on whitehouse.gov.
+This bot will track the 10 latest presidential actions listed on [whitehouse.gov](https://www.whitehouse.gov/)
 
 # Install
 
@@ -12,20 +12,21 @@ go run main.go &
 ```
 
 
-# Usage
+# Discord Usage
 
-Initialize the bot with exeuctive orders, and start the golang worker to check for new actions by running
+In Discord, to initialize the bot and start searching for executive orders, run the command:
 
 ```
 !orders
 ```
-Then once thats finished you can view previous orders by running 
+
+You can view previous orders by running: 
 
 ```
 !ls
 ```
 
-And finally you can retrieve the title, URL, and a brief NLTK based synopsis via
+Finally, you can retrieve the title, URL, and a brief NLTK-based synopsis with the command:
 
 ```
 !view [1-10]
