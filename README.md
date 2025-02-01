@@ -1,6 +1,6 @@
 # Golang Presidential-Action Tracker
 
-This bot will track the 10 latest presidential actions listed on [whitehouse.gov](https://www.whitehouse.gov/)
+This bot will track the latest 10 presidential actions listed on [whitehouse.gov](https://www.whitehouse.gov/).
 
 # Install
 
