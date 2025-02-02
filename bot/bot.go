@@ -43,6 +43,8 @@ func titleInJSON(orderTitle string) bool {
 	for _, order := range orders {
 		if strings.Compare(order.OrderTitle, orderTitle) == 0 { // Case-insensitive comparison
 			fmt.Println("No new entries...")
+			fmt.Printf("%s , %s", order.OrderTitle, orderTitle)
+
 			return true // title is in JSON
 
 		}
@@ -78,7 +80,7 @@ func appendJSON(orderNumber int, orderTitle string, orderLink string, releaseDat
 	}
 
 	// we know  these values are unique to add them to orders array
-	orders = append(orders, order)
+	orders = append([]Order{order}, orders...)
 
 	//now that theyre in orders array lets
 
@@ -146,7 +148,7 @@ func summarize(discord *discordgo.Session, link string) {
 	}
 
 	app := "python3"
-	arg0 := "./bruh.py"
+	arg0 := "./bruh.py" //dont run this as root and  have bruh.py be some whack thing
 
 	cmd := exec.Command(app, arg0)
 
