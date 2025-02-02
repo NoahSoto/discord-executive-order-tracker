@@ -320,7 +320,7 @@ func messageInput(discord *discordgo.Session, message *discordgo.MessageCreate) 
 				fmt.Println("Error converting to integer:", err)
 				return
 			}
-			if number <= 10 && number >= 0 {
+			if number <= len(orders) && number >= 0 {
 				wg.Add(1)
 				go viewMostRecent(discord, message.ChannelID, number)
 			}
