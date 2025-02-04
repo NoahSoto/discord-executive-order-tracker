@@ -69,7 +69,7 @@ func alertUser(discord *discordgo.Session) {
 	wg.Add(1) // Add to WaitGroup
 	go summarize(discord, latestOrder.OrderLink)
 }
-func appendJSON(orderNumber int, orderTitle string, orderLink string, releaseDate string) {
+func prependJSON(orderNumber int, orderTitle string, orderLink string, releaseDate string) {
 	fmt.Println("Append json")
 
 	order := Order{
@@ -85,6 +85,21 @@ func appendJSON(orderNumber int, orderTitle string, orderLink string, releaseDat
 	//now that theyre in orders array lets
 
 }
+func appendJSON(orderNumber int, orderTitle string, orderLink string, releaseDate string) {
+	fmt.Println("Append json")
+
+	order := Order{
+		OrderNumber: orderNumber,
+		OrderTitle:  orderTitle,
+		OrderLink:   orderLink,
+		ReleaseDate: releaseDate,
+	}
+
+	// we know  these values are unique to add them to orders array
+	orders = append(orders, order)
+	//now that theyre in orders array lets
+
+}
 func viewMostRecent(discord *discordgo.Session, channelID string, orderNum int) {
 	fmt.Println("Most recent")
 
@@ -97,14 +112,14 @@ func viewMostRecent(discord *discordgo.Session, channelID string, orderNum int) 
 			orderIndex := orderNum + 1
 			sOrderIndex := strconv.Itoa(orderIndex)
 
-			message := "[" + sOrderIndex + "]" + " Release Date: " + order.ReleaseDate + "\n" + "Title: " + order.OrderTitle + "\n"
+			message := "[" + sOrderIndex + "]" + " Order Release Date: " + order.ReleaseDate + "\n" + "Title: " + order.OrderTitle + "\n"
 			discord.ChannelMessageSend(channelID, message)
 			discord.ChannelMessageSend(channelID, "Link: "+"*"+order.OrderLink+"*")
 
 		}
 	} else {
 		order := orders[orderNum-1]
-		message := "Release Date: " + order.ReleaseDate + "\n" + "Title: " + order.OrderTitle + "\n" + order.OrderLink
+		message := "Order Release Date: " + order.ReleaseDate + "\n" + "Title: " + order.OrderTitle + "\n" + order.OrderLink
 		discord.ChannelMessageSend(channelID, message)
 		wg.Add(1) // Add to WaitGroup
 		go summarize(discord, order.OrderLink)
@@ -197,13 +212,19 @@ func checkWebsite(discord *discordgo.Session) {
 			if !titleInJSON(orderTitle) {
 				fmt.Println(("NEW ORDER ALERT"))
 
-				appendJSON(orderNumber, orderTitle, orderLink, releaseTime)
-				if len(orders) > 9 { //if its still initializing & grabbing data for the first time dont dont print, only most recent ones.
+				if len(orders) < 10 { //if its still initializing & grabbing data for the first time dont dont print, only most recent ones.
+					appendJSON(orderNumber, orderTitle, orderLink, releaseTime)
+					//alertUser(discord)
+				}
+				if len((orders)) == 10 {
+					appendJSON(orderNumber, orderTitle, orderLink, releaseTime)
 					alertUser(discord)
 				}
 				if len(orders) > 10 {
+					alertUser(discord)
 					currentTime := time.Now()
 					fmt.Printf("-----------NEW ORDER ALERT (%s)-----------", currentTime.Format("2006-01-02 15:04:05"))
+					appendJSON(orderNumber, orderTitle, orderLink, releaseTime)
 				}
 			}
 
