@@ -45,3 +45,9 @@ Finally, you can retrieve the title, URL, and a brief NLTK-based synopsis with t
 !view [1-10]
 ```
 
+If you have questions you can always run:
+
+```
+!help
+```
+
